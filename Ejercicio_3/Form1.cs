@@ -23,39 +23,54 @@ namespace Ejercicio_3
             while (vtn.DialogResult == DialogResult.OK && cerrar == false)
             {
                 string nombre = vtn.textBox1.Text;
-               
+                string cuit = vtn.textBox2.Text;
 
                 Persona p = null;
-                if (vtn.radioButton1.Checked)
-                {
-                    p = new Persona(nombre);
-                   
-                }
-                else if(vtn.radioButton2.Checked)
-                {
-                    string cuit = vtn.textBox2.Text;
-                    p = new PersonaJuridica(nombre,cuit);
-                }
-                if (p !=null)
-                {
-                    personas.Add(p);
-                    cerrar = true;
-                }
-                else
-                {
-                    MessageBox.Show("Debe elegir el tipo.");
-                    vtn.ShowDialog();
-                }
-              
-            }
 
-            Actualizar();
+                try
+                {
+                    if (vtn.radioButton1.Checked)
+                    {
+                        p = new Persona(nombre);
+
+                    }
+                    else if (vtn.radioButton2.Checked)
+                    {
+
+                        p = new PersonaJuridica(nombre, cuit);
+                    }
+                    if (p != null)
+                    {
+                        personas.Add(p);
+                        cerrar = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe elegir el tipo.");
+                        vtn.ShowDialog();
+                    }
+                }
+                catch (FormatoNombreNoValidoException ex)
+                {
+
+                    vtn.lbMensajeNombre.Visible = true;
+                    vtn.lbMensajeNombre.Text = ex.Message;
+                }
+                catch (FormatoCuitNoValidoExeption ex)
+                {
+                    vtn.lbMensajeCUIT.Visible = true;
+                    vtn.lbMensajeCUIT.Text = ex.Message;
+                }
+
+                if (cerrar)
+                    vtn.ShowDialog();
+            }
 
         }
 
         protected void Actualizar()
         {
-
+            personas.Sort();
             listBox1.Items.Clear();
             foreach (Persona p in personas)
             {
@@ -63,6 +78,16 @@ namespace Ejercicio_3
             }
            
 
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Persona persona = listBox1.SelectedItem as Persona;
+            if (persona != null)
+            {
+                personas.Remove(persona);
+                Actualizar();
+            }
         }
     }
 }

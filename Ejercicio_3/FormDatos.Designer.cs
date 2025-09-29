@@ -34,8 +34,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbMensajeNombre = new System.Windows.Forms.Label();
+            this.lbMensajeCUIT = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAgregar
@@ -47,6 +47,7 @@
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCancel
             // 
@@ -94,31 +95,31 @@
             this.radioButton2.Text = "radioButton2";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lbMensajeNombre
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
+            this.lbMensajeNombre.AutoSize = true;
+            this.lbMensajeNombre.Location = new System.Drawing.Point(56, 74);
+            this.lbMensajeNombre.Name = "lbMensajeNombre";
+            this.lbMensajeNombre.Size = new System.Drawing.Size(35, 13);
+            this.lbMensajeNombre.TabIndex = 6;
+            this.lbMensajeNombre.Text = "label1";
             // 
-            // label2
+            // lbMensajeCUIT
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 133);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "label2";
+            this.lbMensajeCUIT.AutoSize = true;
+            this.lbMensajeCUIT.Location = new System.Drawing.Point(56, 133);
+            this.lbMensajeCUIT.Name = "lbMensajeCUIT";
+            this.lbMensajeCUIT.Size = new System.Drawing.Size(35, 13);
+            this.lbMensajeCUIT.TabIndex = 7;
+            this.lbMensajeCUIT.Text = "label2";
             // 
             // FormDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 277);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbMensajeCUIT);
+            this.Controls.Add(this.lbMensajeNombre);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.textBox2);
@@ -138,9 +139,9 @@
         public System.Windows.Forms.Button btnAgregar;
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         public System.Windows.Forms.RadioButton radioButton1;
         public System.Windows.Forms.RadioButton radioButton2;
+        public System.Windows.Forms.Label lbMensajeNombre;
+        public System.Windows.Forms.Label lbMensajeCUIT;
     }
 }

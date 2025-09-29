@@ -16,5 +16,10 @@ namespace Ejercicio_3
         {
             InitializeComponent();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

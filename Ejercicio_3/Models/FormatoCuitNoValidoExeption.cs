@@ -6,21 +6,13 @@ using System.Threading.Tasks;
 
 namespace Ejercicio_3.Models
 {
-    internal class FormatoCuitNoValidoExeption : ApplicationException
+    public class FormatoCuitNoValidoExeption : ApplicationException
     {
-        public FormatoCuitNoValidoExeption()
-        {
-            
-        }
+        public FormatoCuitNoValidoExeption() : base("El Cuit debe tener 11 digitos numericos."){}
 
-        public FormatoCuitNoValidoExeption(string message)
-        {
-            
-        }
+        public FormatoCuitNoValidoExeption(string message) { }
+       
 
-        public FormatoCuitNoValidoExeption(string message, Exception inner)
-        {
-            
-        }
+        public FormatoCuitNoValidoExeption(string message, Exception inner) { }
     }
 }

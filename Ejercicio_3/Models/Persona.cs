@@ -1,17 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Ejercicio_3.Models
 {
-    internal class Persona : IComparable<Persona>
+    public class Persona : IComparable<Persona>
     {
         protected string nombre;
         public string Nombre { 
             get { return nombre; }
-            set { nombre = value; }
+            set {
+                Match match = Regex.Match(value, @"^\s*(?<apellido>[\p{L}\s]{2,}?),\s*(?<nombres>[\p{L}\s]{2,})\s*$");
+                if(match.Success == false)
+                {
+                    throw new FormatoNombreNoValidoException();
+                }
+                nombre = value; 
+            }
         }
 
         public Persona(string nombre)
