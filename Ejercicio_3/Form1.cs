@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Ejercicio_3
 {
@@ -19,8 +20,8 @@ namespace Ejercicio_3
             FormDatos vtn = new FormDatos();
 
             bool cerrar = false;
-            vtn.ShowDialog();
-            while (vtn.DialogResult == DialogResult.OK && cerrar == false)
+
+            while (vtn.ShowDialog() == DialogResult.OK && cerrar == false)
             {
                 string nombre = vtn.textBox1.Text;
                 string cuit = vtn.textBox2.Text;
@@ -36,7 +37,10 @@ namespace Ejercicio_3
                     }
                     else if (vtn.radioButton2.Checked)
                     {
-
+                        if (string.IsNullOrWhiteSpace(cuit))
+                        {
+                            throw new FormatoCuitNoValidoExeption("El CUIT no puede estar vacío.");
+                        }
                         p = new PersonaJuridica(nombre, cuit);
                     }
                     if (p != null)
@@ -59,13 +63,18 @@ namespace Ejercicio_3
                 catch (FormatoCuitNoValidoExeption ex)
                 {
                     vtn.lbMensajeCUIT.Visible = true;
+                    vtn.lbMensajeCUIT.Visible = true;
                     vtn.lbMensajeCUIT.Text = ex.Message;
                 }
 
                 if (cerrar)
-                    vtn.ShowDialog();
+                    vtn.textBox1.Clear();
+                    vtn.textBox2.Clear();
+
             }
 
+
+            Actualizar();
         }
 
         protected void Actualizar()
@@ -76,8 +85,6 @@ namespace Ejercicio_3
             {
                 listBox1.Items.Add(p.Describir());
             }
-           
-
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

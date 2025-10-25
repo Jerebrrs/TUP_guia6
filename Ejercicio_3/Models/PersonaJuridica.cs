@@ -7,12 +7,12 @@ namespace Ejercicio_3.Models
         protected string cuit;
         public PersonaJuridica(string nombre, string cuit):base(nombre)
         {
-
+            this.cuit = cuit;
             if (VerificarCuit()== false)
             {
                 throw new FormatoCuitNoValidoExeption();
             }
-            this.cuit = cuit;
+           
         }
 
         private bool VerificarCuit()
@@ -46,7 +46,7 @@ namespace Ejercicio_3.Models
 
         public override string Describir()
         {
-            return $"{base.Describir()}Cuit: {cuit}"; 
+            return $"{base.Describir()} ({cuit})"; 
         }
     }
 }
